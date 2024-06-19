@@ -61,6 +61,13 @@
     </ul>
 
     <script>
+
+        // => to do 
+        // type, timestamp, defaultPrevented
+        // target, toElement, srcElement, currentTarget
+        // clientX, clientY, screenX, screenY, offsetWidth, offsetHeight,
+        // altKey, ctrKey, shiftKey, keyCode
+
         //////////////// for condition false //////////////////////
         // document.getElementById("images").addEventListener("click", function (e) {
         //     console.log("clicked inside the ul")
@@ -68,26 +75,31 @@
 
         // document.getElementById("owl").addEventListener("click", function (e) {
         //     console.log("owl clicked")
+        //     e.stopPropagation()
         // }, false) // note bable = > bable is down to up working (before clicked children after clicked parent)
-        
+
 
 
         //////////////// for condition true //////////////////////
-        document.getElementById("images").addEventListener("click", function (e) {
-            console.log("clicked inside the ul")
-        }, true)// note bable = > b(before clicked parent after clicked child)
+        // document.getElementById("images").addEventListener("click", function (e) {
+        //     console.log("clicked inside the ul")
+        // }, true)// note bable = > b(before clicked parent after clicked child)
 
-        document.getElementById("owl").addEventListener("click", function (e) {
-            console.log("owl clicked")
-        }, true) // note bable = > (before clicked parent after clicked child)
-        
-        
-        
-        // => to do 
-        // type, timestamp, defaultPrevented
-        // target, toElement, srcElement, currentTarget
-        // clientX, clientY, screenX, screenY, offsetWidth, offsetHeight,
-        // altKey, ctrKey, shiftKey, keyCode
+        // document.getElementById("owl").addEventListener("click", function (e) {
+        //     console.log("owl clicked")
+        // }, true) // note bable = > (before clicked parent after clicked child)
+
+
+        ////////////////// remome node ///////////////////
+        document.getElementById("images").addEventListener("click", function (e) {
+            console.log(e.target.tagName)
+            if (e.target.tagName === "IMG") {
+                let removeLi = e.target.parentNode
+                removeLi.remove()
+            }
+        }, false) // note bable = > (before clicked parent after clicked child)
+
+
 
 
 
