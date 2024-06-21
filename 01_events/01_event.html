@@ -91,16 +91,19 @@
 
 
         ////////////////// remome node ///////////////////
-        document.getElementById("images").addEventListener("click", function (e) {
-            console.log(e.target.tagName)
-            if (e.target.tagName === "IMG") {
-                let removeLi = e.target.parentNode
-                removeLi.remove()
-            }
-        }, false) // note bable = > (before clicked parent after clicked child)
+        // document.getElementById("images").addEventListener("click", function (e) {
+        //     console.log(e.target.tagName)
+        //     if (e.target.tagName === "IMG") {
+        //         let removeLi = e.target.parentNode
+        //         removeLi.remove()
+        //     }
+        // }, false) // note bable = > (before clicked parent after clicked child)
 
 
-
+        /////////////////////// event type ///////////////
+        // document.getElementById("images").addEventListener("click", function (e) {
+        //     console.log(e.type)
+        // }, false) 
 
 
     </script>
