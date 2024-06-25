@@ -67,12 +67,12 @@
 // let arr3 = arr1.concat(arr2) // it merge the array
 // console.log(arr3) // return => [ 'ajay', 'deepak', 'rahul', 'roshan', 'rahini', 'shiva' ]
 
-// let arr3 = [...arr1, ...arr2] // give the same result and called => Apeard Array
+// let arr3 = [...arr1, ...arr2] // merge two array and called => Speard Array
 // console.log(arr3) // return => [ 'ajay', 'deepak', 'rahul', 'roshan', 'rahini', 'shiva' ]
 
 
 // let nestedArray = [1, 2, [3, 4], 5, [6, 7, [8, 9]]]
-// let flatArr = nestedArray.flat(Infinity) // concatinat all sub array call => flat method
+// let flatArr = nestedArray.flat(Infinity) // concatenate all sub array call => flat method
 // console.log(flatArr) //return => [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 
