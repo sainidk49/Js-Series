@@ -74,3 +74,13 @@
 // let nestedArray = [1, 2, [3, 4], 5, [6, 7, [8, 9]]]
 // let flatArr = nestedArray.flat(Infinity) // concatinat all sub array call => flat method
 // console.log(flatArr) //return => [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
+// ===================== convert into a array ================================
+// console.log(Array.from("Deepak")) // return=> [ 'D', 'e', 'e', 'p', 'a', 'k' ]
+
+let el1 = 100;
+let el2 = 200;
+let el3 = 300;
+console.log(Array.of(el1, el2, el3)) // return=> [ 100, 200, 300 ]
+
