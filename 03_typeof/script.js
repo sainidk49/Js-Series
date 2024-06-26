@@ -1,9 +1,8 @@
-// let value = 33
-// let value = "33"
-// let value = "33abc"
-// let value = true;
-// let value = false;
-// let value;
+// let value = 33 // type of return => Number
+// let value = "33" // type of return => String
+// let value = "33abc" // type of return => String
+// let value = true; // type of return => Boolean
+// let value = false; // type of return => Boolean
 // console.log("value : " + value)
 // console.log("typeof : "+ typeof value)
 
