@@ -20,8 +20,10 @@ let myDate = new Date();
 // let myCreatedDate = new Date(2023, 0, 28);
 // console.log(myCreatedDate.toLocaleDateString()) // return => 28/1/2023
 
+
 // let myCreatedDate = new Date(2023, 0, 28, 5, 3);
 // console.log(myCreatedDate.toLocaleTimeString()) // return => 5:03:00 am
+
 
 // let createdDate = new Date("2023-01-15")
 // console.log(createdDate.toLocaleDateString()) // return => 15/1/2023
@@ -42,6 +44,7 @@ let currentDate = date.toLocaleString("default",{
     year: "numeric"
 })
 console.log(currentDate) // return => 24/6/202424/6/2024
+
 
 /// long 
 // let currentDate = date.toLocaleString("default", {

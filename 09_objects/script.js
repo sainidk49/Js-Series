@@ -21,13 +21,16 @@
 // console.log(user.days[1])
 // console.log(user[keyValue])
 
+
 // user.name = "dk saini"; //change the value  
 // console.log(user)
+
 
 // // if you dont allow to anyone to change object value. So you can freeze to object 
 // Object.freeze(user) // it lock the object you can't change after use this method
 // user.name = "dpk saini";
 // console.log(user)
+
 
 // ========================= funtion Object ============================
 // let user = {
@@ -41,6 +44,7 @@
 //     }
 // }
 // user.userDetails()
+
 
 // =================== nested object ======================
 // let userDetails = {
@@ -57,6 +61,7 @@
 // }
 // console.log(userDetails.user.name.firstname)
 
+
 // =================== concatenate object ======================
 // let userPersondalDetails = {
 //     name: "deepak",
@@ -64,16 +69,20 @@
 //     email: "deepak@atthah.com"
 // }
 
+
 // let userOtherDetails = {
 //     college: "engineering college",
 //     location: "gajroula"
 // }
 
+
 // let concatenate = {...userOtherDetails, ...userPersondalDetails} // merge two object and called => Speard Array
 // console.log(concatenate)
 
+
 // let concatenate = Object.assign({}, userPersondalDetails, userOtherDetails)
 // console.log(concatenate) // merge two object
+
 
 // console.log(Object.keys(userPersondalDetails)) // retturn => [ 'name', 'age', 'email' ]
 // console.log(Object.values(userPersondalDetails)) // retturn => [ 'deeepa', 27, 'deepak@atthah.com' ]

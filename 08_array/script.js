@@ -61,11 +61,14 @@
 // let arr1 = ["ajay", "deepak", "rahul"]
 // let arr2 = ["roshan", "rahini", "shiva"]
 
+
 // arr1.push(arr2) // it make nasted array. put as a child array at last index
 // console.log(arr1) // return => [ 'ajay', 'deepak', 'rahul', ['roshan', 'rahini', 'shiva'] ]
 
+
 // let arr3 = arr1.concat(arr2) // it merge the array
 // console.log(arr3) // return => [ 'ajay', 'deepak', 'rahul', 'roshan', 'rahini', 'shiva' ]
+
 
 // let arr3 = [...arr1, ...arr2] // merge two array and called => Speard Array
 // console.log(arr3) // return => [ 'ajay', 'deepak', 'rahul', 'roshan', 'rahini', 'shiva' ]

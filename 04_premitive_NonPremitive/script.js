@@ -26,12 +26,13 @@
 // console.log(typeof fun) // => function
 
 
-/// ================== Stack (Premitive) and Heap(Non-Premitive)
+/// ====== Stack (Premitive) and Heap(Non-Premitive) ============
 
 // let value1 = "dksaini"
 // let value2 = value1;
 // value2 = "dpksaini"
 // console.log(`value1: ${value1} :: value2 ${value2}`) // => its make a copy or variable in Stack
+
 
 // let user1 = {
 //     name : "deepak",

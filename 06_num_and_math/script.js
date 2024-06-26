@@ -2,13 +2,16 @@
 // console.log(score); // 400
 // console.log(typeof score); // Number
 
+
 // const balance = new Number(1000)
 // console.log(balance) // [Number : 1000]
 // console.log(typeof balance) // object
 // console.log(balance.toFixed(2)) // 1000.00 commonly use for Ecommerce
 
+
 // const floatNum = 123.8966
 // console.log(floatNum.toPrecision(3))
+
 
 // const ruppes = 1000000
 // console.log(ruppes.toLocaleString()) //  return => 10,00,000
