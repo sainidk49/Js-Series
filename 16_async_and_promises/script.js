@@ -62,7 +62,7 @@ async function getDataThen() {
         .then((user) => user.json())
         .then((userJsonData)=>{
             userJsonData.map((user)=>{
-                console.log(user.id)
+                console.log(user.name)
             })
         })
         .catch((err) => {
