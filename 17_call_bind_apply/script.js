@@ -1,0 +1,43 @@
+// ================= Describe Call Methud ================
+let obj1 = {
+    name: "deepak",
+    age: 27,
+    email: "dpksaini49@gmail.com",
+    fetchDetail1: function(){
+        console.log(this.name)
+    }
+}
+let obj2 = {
+    name: "ajay",
+    age: 23,
+    email: "ajaybisht@gmail.com",
+}
+
+// obj1.fetchDetail1()
+// obj1.fetchDetail1.call(obj2)
+
+/// also can be use function as indivisual with call 
+
+// function fetchDetail2(name, email){
+//     console.log(name, email, this.age)
+// }
+// fetchDetail2.call(obj1, "rahul", "rahul@gmail.com") => pass the parameters
+// fetchDetail2.call(obj2, "rekha", "rekha@gmail.com") => pass the parameters
+
+
+// ================= With apply Methud ================
+// function fetchDetail2(name, email){
+//     console.log(name, email, this.age)
+// }
+// fetchDetail2.apply(obj1, ["rahul", "rahul@gmail.com"]) //=> pass the array
+// fetchDetail2.apply(obj2, ["rekha", "rekha@gmail.com"]) //=> pass the array
+
+
+// ================= With bind Methud ================
+// function fetchDetail2(name, email){
+//     console.log(name, email, this.age)
+// }
+// let fun1 = fetchDetail2.bind(obj1, "rahul", "rahul@gmail.com") //=> store in variable and call where you want 
+// let fun2 = fetchDetail2.bind(obj2, "rekha", "rekha@gmail.com") //=> store in variable and call where you want
+// fun1()
+// fun2()
