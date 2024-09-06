@@ -3,7 +3,8 @@
 // let value = 5 ?? 10 // retrun = > 5
 // let value = 0 ?? 10 // retrun = > 0
 // let value = null ?? 10 // retrun = > 10
-// let value = undefined ?? 10 // retrun = > undefined
+// let value = undefined ?? 10 // retrun = > 10
+// let value = "" ?? 10 // retrun = > ""
 // console.log(value)
 
 
@@ -12,6 +13,7 @@
 // let value = 0 || 10; // retrun = > 10
 // let value = null || 10; // retrun = > 10
 // let value = undefined || 10; // retrun = > 10
+// let value = "" || 10; // retrun = > 10
 // console.log(value)
 
 
