@@ -19,7 +19,8 @@ function intersect() {
     }
     console.log(intersect)
 }
-// intersect()
+// intersect() ==> Fun calling here!
+
 
 //////////////// short the array ////////////////
 function shortArray() {
@@ -35,4 +36,133 @@ function shortArray() {
     }
     console.log(arr1)
 }
-// shortArray()
+// shortArray() ==> Fun calling here!
+
+///////////// check character count ////////////
+function characterCount() {
+    let str = "deepak"
+    let obj = {};
+    for (const x of str) {
+        if (obj[x]) {
+            obj[x] += 1;
+        }
+        else {
+            obj[x] = 1;
+        }
+    }
+    console.log(obj)
+}
+// characterCount() ==> Fun calling here!
+
+
+///////////// find same key element ////////////
+function sameKeyElem() {
+    let objArr = [
+        { key: "sample1", data: "data1" },
+        { key: "sample4", data: "data4" },
+        { key: "sample4", data: "data4" },
+        { key: "sample3", data: "data3" },
+        { key: "sample1", data: "data1" },
+        { key: "sample2", data: "data2" },
+        { key: "sample1", data: "data1" },
+    ];
+    let output = {}
+    objArr.forEach(item => {
+        if (output[item.key]) {
+            output[item.key].push(item)
+        }
+        else {
+            output[item.key] = [item]
+        }
+    })
+    console.log(output)
+}
+// sameKeyElem() ==> Fun calling here!
+
+
+
+///////////// convert array to object ///////////
+function convertArrToObj() {
+    let nameArr = ["deepak", "sonu", "ajay"];
+    let obj = {}
+    nameArr.forEach((name, index) => {
+        obj[index] = name
+    })
+    console.log(obj)
+}
+// convertArrToObj() ==> Fun calling here!
+
+
+
+
+///////////// Callback Fn ///////////
+function Callback(a, b, fn) {
+    return fn(a, b)
+}
+function add(a, b) {
+    return a + b
+}
+function multi(a, b) {
+    return a * b
+}
+// console.log(Callback(1, 3, multi)) ===> calling here
+
+
+
+////////////////// Memorize function ///////////////
+function memorize(fn) {
+    const cache = new Map()
+    return function (...args) {
+        const key = JSON.stringify(args);
+        if (cache.has(key)) {
+            const result = cache.get(key)
+            const { value, callback } = result;
+            callback("Return from cache", value)
+            return
+        }
+
+        const result = fn(...args)
+        cache.set(key, result)
+        const { value, callback } = result;
+        callback("New result", value)
+
+    }
+}
+
+function AddValue(a, b, callback) {
+    let value = a + b;
+    return { value, callback };
+}
+
+const memoizeFun = memorize(AddValue)
+
+// memoizeFun(2, 5, (message, value) => {
+//     console.log("a", message, value)
+// })
+// memoizeFun(2, 5, (message, value) => {
+//     console.log("a", message, value)
+// })
+
+// memoizeFun(2, 9, (message, value) => {
+//     console.log("c", message, value)
+// })
+
+
+
+////////////////// flatten array ///////////////
+
+const nestedArr = [1, 2, 3, [4, [5, 6]], 7, 8]
+const flattenArr = [];
+function flatten(a) {
+    for (let i = 0; i < a.length; i++) {
+        if (Array.isArray(a[i])) {
+            flatten(a[i])
+        }
+        else {
+            flattenArr.push(a[i])
+        }
+    }
+    return flattenArr
+}
+
+console.log(flatten(nestedArr))
