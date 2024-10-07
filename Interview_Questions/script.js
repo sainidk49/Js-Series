@@ -19,7 +19,7 @@ function intersect() {
     }
     console.log(intersect)
 }
-// intersect() ==> Fun calling here!
+// intersect() //==> Fun calling here!
 
 
 //////////////// short the array ////////////////
@@ -36,23 +36,26 @@ function shortArray() {
     }
     console.log(arr1)
 }
-// shortArray() ==> Fun calling here!
+// shortArray() //==> Fun calling here!
 
 ///////////// check character count ////////////
 function characterCount() {
-    let str = "deepak"
+    let str = "deepak saini";
     let obj = {};
     for (const x of str) {
-        if (obj[x]) {
-            obj[x] += 1;
+        if(x !== " "){
+            if(obj[x]){
+                obj[x] += 1;
+            }
+            else{
+                obj[x] = 1;
+            }
         }
-        else {
-            obj[x] = 1;
-        }
+        
     }
-    console.log(obj)
+    console.log(obj);
 }
-// characterCount() ==> Fun calling here!
+// characterCount() //==> Fun calling here!
 
 
 ///////////// find same key element ////////////
@@ -77,8 +80,7 @@ function sameKeyElem() {
     })
     console.log(output)
 }
-// sameKeyElem() ==> Fun calling here!
-
+// sameKeyElem() //==> Fun calling here!
 
 
 ///////////// convert array to object ///////////
@@ -90,9 +92,7 @@ function convertArrToObj() {
     })
     console.log(obj)
 }
-// convertArrToObj() ==> Fun calling here!
-
-
+// convertArrToObj() //==> Fun calling here!
 
 
 ///////////// Callback Fn ///////////
@@ -105,7 +105,7 @@ function add(a, b) {
 function multi(a, b) {
     return a * b
 }
-// console.log(Callback(1, 3, multi)) ===> calling here
+// console.log(Callback(1, 3, multi)) //===> calling here
 
 
 
@@ -150,7 +150,6 @@ const memoizeFun = memorize(AddValue)
 
 
 ////////////////// flatten array ///////////////
-
 const nestedArr = [1, 2, 3, [4, [5, 6]], 7, 8]
 const flattenArr = [];
 function flatten(a) {
@@ -164,5 +163,4 @@ function flatten(a) {
     }
     return flattenArr
 }
-
-console.log(flatten(nestedArr))
+// console.log(flatten(nestedArr)) //==> calling here
