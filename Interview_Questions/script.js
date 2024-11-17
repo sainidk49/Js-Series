@@ -164,3 +164,32 @@ function flatten(a) {
     return flattenArr
 }
 // console.log(flatten(nestedArr)) //==> calling here
+
+
+// ============== chane method ===================
+
+function computeAmount() {
+    let total = 0
+    return {
+        
+        crore : function(value){
+            total += value*10000000
+            return this  ////// allow to channing
+        }  ,
+        lacs : function(value){
+            total += value*100000 
+            
+            return this ////// allow to channing
+        },
+        thousand: function(value){
+            total += value * 1000 
+            return this ////// allow to channing
+        },  
+        value: function(){
+            return total
+        }
+
+    }
+}
+console.log(computeAmount().lacs(12).thousand(5).lacs(12).value())
+console.log(computeAmount().lacs(15).thousand(5).value())
