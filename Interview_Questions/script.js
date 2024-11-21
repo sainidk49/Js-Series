@@ -70,14 +70,14 @@ function sameKeyElem() {
         { key: "sample1", data: "data1" },
     ];
     let output = {}
-    objArr.forEach(item => {
+    for (const item of objArr) {
         if (output[item.key]) {
             output[item.key].push(item)
         }
         else {
             output[item.key] = [item]
         }
-    })
+    }
     console.log(output)
 }
 // sameKeyElem() //==> Fun calling here!
@@ -152,28 +152,28 @@ const memoizeFun = memorize(AddValue)
 function computeAmount() {
     let total = 0
     return {
-        
-        crore : function(value){
-            total += value*10000000
+
+        crore: function (value) {
+            total += value * 10000000
             return this  ////// allow to channing
-        }  ,
-        lacs : function(value){
-            total += value*100000 
-            
+        },
+        lacs: function (value) {
+            total += value * 100000
+
             return this ////// allow to channing
         },
-        thousand: function(value){
-            total += value * 1000 
+        thousand: function (value) {
+            total += value * 1000
             return this ////// allow to channing
-        },  
-        value: function(){
+        },
+        value: function () {
             return total
         }
 
     }
 }
-console.log(computeAmount().lacs(12).thousand(5).lacs(12).value())
-console.log(computeAmount().lacs(15).thousand(5).value())
+// console.log(computeAmount().lacs(12).thousand(5).lacs(12).value())
+// console.log(computeAmount().lacs(15).thousand(5).value())
 
 
 ////////////////// flatten array ///////////////
@@ -203,9 +203,26 @@ function capitalizeWord(str) {
 function reverseWord(str) {
     // return str.split('').reverse().join('')
     let reverseStr = ''
-    for (let index = str.length-1; index >= 0; index--) {
-        reverseStr += str[index]; 
+    for (let index = str.length - 1; index >= 0; index--) {
+        reverseStr += str[index];
     }
     return reverseStr
 }
 // console.log(reverseWord("helloworld"))
+
+
+/////////////////// nullish Coaescing ///////////////
+function nullishCoaescing(person) {
+    let user = person?.name ?? "Deepak";
+    console.log(user)
+}
+// nullishCoaescing({ name: undefined })
+
+
+/////////////////// get unique value ///////////////
+function getUniqueValues(arr) {
+    return arr.filter((value, index, self) => {
+        return self.indexOf(value) === index;
+    });
+}
+console.log(getUniqueValues([1, 2, 2, 3, 4, 4, 5])) //// return => [ 1, 2, 3, 4, 5 ]
