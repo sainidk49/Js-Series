@@ -43,15 +43,15 @@ function characterCount() {
     let str = "deepak saini";
     let obj = {};
     for (const x of str) {
-        if(x !== " "){
-            if(obj[x]){
+        if (x !== " ") {
+            if (obj[x]) {
                 obj[x] += 1;
             }
-            else{
+            else {
                 obj[x] = 1;
             }
         }
-        
+
     }
     console.log(obj);
 }
@@ -120,7 +120,6 @@ function memorize(fn) {
             callback("Return from cache", value)
             return
         }
-
         const result = fn(...args)
         cache.set(key, result)
         const { value, callback } = result;
@@ -146,24 +145,6 @@ const memoizeFun = memorize(AddValue)
 // memoizeFun(2, 9, (message, value) => {
 //     console.log("c", message, value)
 // })
-
-
-
-////////////////// flatten array ///////////////
-const nestedArr = [1, 2, 3, [4, [5, 6]], 7, 8]
-const flattenArr = [];
-function flatten(a) {
-    for (let i = 0; i < a.length; i++) {
-        if (Array.isArray(a[i])) {
-            flatten(a[i])
-        }
-        else {
-            flattenArr.push(a[i])
-        }
-    }
-    return flattenArr
-}
-// console.log(flatten(nestedArr)) //==> calling here
 
 
 // ============== chane method ===================
@@ -193,3 +174,38 @@ function computeAmount() {
 }
 console.log(computeAmount().lacs(12).thousand(5).lacs(12).value())
 console.log(computeAmount().lacs(15).thousand(5).value())
+
+
+////////////////// flatten array ///////////////
+const nestedArr = [1, 2, 3, [4, [5, 6]], 7, 8]
+const flattenArr = [];
+function flatten(a) {
+    for (let i = 0; i < a.length; i++) {
+        if (Array.isArray(a[i])) {
+            flatten(a[i])
+        }
+        else {
+            flattenArr.push(a[i])
+        }
+    }
+    return flattenArr
+}
+// console.log(flatten(nestedArr)) //==> calling here
+
+
+///////////// capitalize words /////////////
+function capitalizeWord(str) {
+    return str.split(" ").map(str => str.charAt(0).toUpperCase() + str.slice(1)).join(' ')
+}
+// console.log(capitalizeWord("hello world"))
+
+/////////// reverse words /////////////
+function reverseWord(str) {
+    // return str.split('').reverse().join('')
+    let reverseStr = ''
+    for (let index = str.length-1; index >= 0; index--) {
+        reverseStr += str[index]; 
+    }
+    return reverseStr
+}
+// console.log(reverseWord("helloworld"))

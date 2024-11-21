@@ -41,11 +41,11 @@
 
 
 // ************* slice *****************
-// let arr1 = [1, 2, 3, 4, 5]
-// // let arr2 = arr1.slice() // its make a copy of array
-// let arr2 = arr1.slice(1, 4) // take a range value from start point to end point
-// console.log(arr1) // return=> [ 1, 2, 3, 4, 5 ]
-// console.log(arr2) // return=> [ 2, 3, 4 ]
+let arr1 = [1, 2, 3, 4, 5]
+// let arr2 = arr1.slice() // its make a copy of array
+let arr2 = arr1.slice(1, 4) // take a range value from start point to end point
+console.log(arr1) // return=> [ 1, 2, 3, 4, 5 ]
+console.log(arr2) // return=> [ 2, 3, 4 ]
 
 
 // ************* splice *****************
