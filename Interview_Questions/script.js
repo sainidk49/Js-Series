@@ -178,6 +178,10 @@ function computeAmount() {
 
 ////////////////// flatten array ///////////////
 const nestedArr = [1, 2, 3, [4, [5, 6]], 7, 8]
+
+// const flattenArr = nestedArr.flat(Infinity)
+// console.log(flattenArr)
+
 const flattenArr = [];
 function flatten(a) {
     for (let i = 0; i < a.length; i++) {
@@ -225,4 +229,4 @@ function getUniqueValues(arr) {
         return self.indexOf(value) === index;
     });
 }
-console.log(getUniqueValues([1, 2, 2, 3, 4, 4, 5])) //// return => [ 1, 2, 3, 4, 5 ]
+// console.log(getUniqueValues([1, 2, 2, 3, 4, 4, 5])) //// return => [ 1, 2, 3, 4, 5 ]
