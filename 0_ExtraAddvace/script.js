@@ -150,3 +150,13 @@
 // }
 // let name = "deepak       ";
 // console.log(name.truelength())
+
+// need look like => [0, 1, 1, 2, 3, 5, 8]
+function fibonacci(n) {
+    let fibonacciArr = [0, 1]
+    for (let index = 2; index < n; index++) {
+        fibonacciArr.push(fibonacciArr[index-2]+ fibonacciArr[index-1])
+    }
+    console.log(fibonacciArr)
+}
+fibonacci(5) 
