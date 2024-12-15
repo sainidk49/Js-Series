@@ -21,7 +21,7 @@
 // console.log(Math)
 // const mathNum = Math.abs(4) // return 4
 // const mathNum = Math.abs(-4) // also return 4 it change negative value to positive 
-// const mathNum = Math.round(4.4) // its make in a round figur numer 4.4 = 4 and 4.5 < 5 = 5
+// const mathNum = Math.round(4.5) // its make in a round figur numer 4.4 = 4 and 4.5 < 5 = 5
 // const mathNum = Math.ceil(4.2) // if 4 to 5 return 5
 // const mathNum = Math.floor(4.6) // if 4 to 5 return 4
 // const mathNum = Math.sqrt(16) // return 4

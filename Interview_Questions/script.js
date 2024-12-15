@@ -220,7 +220,7 @@ function nullishCoaescing(person) {
     let user = person?.name ?? "Deepak";
     console.log(user)
 }
-// nullishCoaescing({ name: undefined })
+nullishCoaescing({ name: undefined }) //=> Deepak
 
 
 /////////////////// get unique value ///////////////

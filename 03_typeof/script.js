@@ -6,12 +6,13 @@
 // console.log("value : " + value)
 // console.log("typeof : "+ typeof value)
 
+
 // console.log("=================")
+
 
 // let IntValue = Number(value);
 // console.log("value : " + IntValue)
 // console.log("typeof : "+ typeof IntValue)
-
 
 
 // ////////////////// conver a number into string //////////////////////

@@ -61,19 +61,18 @@
 
 
 // function User(name, age) {
-//     // this.name = name; 
-//     // this.age = age; 
+//     this.name = name; 
+//     this.age = age; 
 // }
 
 // let user = new User("deepak", 25); /// new keyword make a object and put value in that obj and return whole obj
-// console.log(user); //// => User { name: 'deepak', age: 25 }
+// console.log(user.name); //// => User { name: 'deepak', age: 25 }
 
 
 // class User {
 //     constructor(name, age) {
 //         this.name = name;
 //         this.age = age;
-
 //     }
 // }
 // let user = new User("deepak", 25); 
@@ -110,17 +109,19 @@
 // }
 // printMe(); ////// method not called by using strick mode
 
+
 // console.log([] == "") // return true
+
 
 // class Animal {
 //     constructor(name) {
 //         this.name = name;
 //     }
-
 //     animal() {
 //         console.log(`${this.name} makes a sound.`);
 //     }
 // }
+
 
 // class Dog extends Animal {
 //     constructor(name, breed) {
@@ -135,7 +136,7 @@
 
 // let dog = new Dog('Buddy', 'Golden Retriever');
 // dog.speak();
-// dog.animal(); 
+// dog.animal();
 
 
 // ===========  inject prototype ==============
@@ -152,11 +153,12 @@
 // console.log(name.truelength())
 
 // need look like => [0, 1, 1, 2, 3, 5, 8]
-function fibonacci(n) {
-    let fibonacciArr = [0, 1]
-    for (let index = 2; index < n; index++) {
-        fibonacciArr.push(fibonacciArr[index-2]+ fibonacciArr[index-1])
-    }
-    console.log(fibonacciArr)
-}
-fibonacci(5) 
+// function fibonacci(n) {
+//     let fibonacciArr = [0, 1]
+//     for (let index = 2; index < n; index++) {
+//         fibonacciArr.push(fibonacciArr[index-2]+ fibonacciArr[index-1])
+//     }
+//     console.log(fibonacciArr)
+// }
+// fibonacci(5) 
+
