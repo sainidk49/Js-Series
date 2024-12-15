@@ -83,7 +83,7 @@ let user = {
 //     console.log(`index : ${index} :: value : ${value}`)
 // })
 
-function fetchVal(value, index){
-    console.log(`index : ${index} :: value : ${value}`)
-}
-arrNum.forEach(fetchVal)
+// function fetchVal(value, index){
+//     console.log(`index : ${index} :: value : ${value}`)
+// }
+// arrNum.forEach(fetchVal)

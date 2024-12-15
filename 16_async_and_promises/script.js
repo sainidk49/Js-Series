@@ -68,5 +68,6 @@ async function getDataThen() {
         .catch((err) => {
             console.log(err)
         })
+        .finally(()=> console.log("hello world"))
 }
 getDataThen()

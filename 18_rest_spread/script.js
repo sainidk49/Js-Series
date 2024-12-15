@@ -1,11 +1,12 @@
 // =================== Rest Operator ===============
+let numArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
-// function addNum(a, b, c, ...all) {
+// function resSpreadNum(a, b, c, ...all) {
 //     console.log(a + b + c)
 //     return all
-
 // }
-// console.log(addNum(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12))
+// console.log(resSpreadNum(...numArr))
+
 
 
 // =================== Spread Operator =============
@@ -19,6 +20,7 @@ let obj2 = {
     ...obj1,
     email: "deepak@atthah.com"
 }
+
 
 console.log(obj1)
 console.log(obj2)

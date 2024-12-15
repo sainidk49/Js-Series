@@ -43,15 +43,15 @@ function characterCount() {
     let str = "deepak saini";
     let obj = {};
     for (const x of str) {
-        if(x !== " "){
-            if(obj[x]){
+        if (x !== " ") {
+            if (obj[x]) {
                 obj[x] += 1;
             }
-            else{
+            else {
                 obj[x] = 1;
             }
         }
-        
+
     }
     console.log(obj);
 }
@@ -70,14 +70,14 @@ function sameKeyElem() {
         { key: "sample1", data: "data1" },
     ];
     let output = {}
-    objArr.forEach(item => {
+    for (const item of objArr) {
         if (output[item.key]) {
             output[item.key].push(item)
         }
         else {
             output[item.key] = [item]
         }
-    })
+    }
     console.log(output)
 }
 // sameKeyElem() //==> Fun calling here!
@@ -120,7 +120,6 @@ function memorize(fn) {
             callback("Return from cache", value)
             return
         }
-
         const result = fn(...args)
         cache.set(key, result)
         const { value, callback } = result;
@@ -148,9 +147,41 @@ const memoizeFun = memorize(AddValue)
 // })
 
 
+// ============== chane method ===================
+
+function computeAmount() {
+    let total = 0
+    return {
+
+        crore: function (value) {
+            total += value * 10000000
+            return this  ////// allow to channing
+        },
+        lacs: function (value) {
+            total += value * 100000
+
+            return this ////// allow to channing
+        },
+        thousand: function (value) {
+            total += value * 1000
+            return this ////// allow to channing
+        },
+        value: function () {
+            return total
+        }
+
+    }
+}
+// console.log(computeAmount().lacs(12).thousand(5).lacs(12).value())
+// console.log(computeAmount().lacs(15).thousand(5).value())
+
 
 ////////////////// flatten array ///////////////
 const nestedArr = [1, 2, 3, [4, [5, 6]], 7, 8]
+
+// const flattenArr = nestedArr.flat(Infinity)
+// console.log(flattenArr)
+
 const flattenArr = [];
 function flatten(a) {
     for (let i = 0; i < a.length; i++) {
@@ -166,30 +197,36 @@ function flatten(a) {
 // console.log(flatten(nestedArr)) //==> calling here
 
 
-// ============== chane method ===================
-
-function computeAmount() {
-    let total = 0
-    return {
-        
-        crore : function(value){
-            total += value*10000000
-            return this  ////// allow to channing
-        }  ,
-        lacs : function(value){
-            total += value*100000 
-            
-            return this ////// allow to channing
-        },
-        thousand: function(value){
-            total += value * 1000 
-            return this ////// allow to channing
-        },  
-        value: function(){
-            return total
-        }
-
-    }
+///////////// capitalize words /////////////
+function capitalizeWord(str) {
+    return str.split(" ").map(str => str.charAt(0).toUpperCase() + str.slice(1)).join(' ')
 }
-console.log(computeAmount().lacs(12).thousand(5).lacs(12).value())
-console.log(computeAmount().lacs(15).thousand(5).value())
+// console.log(capitalizeWord("hello world"))
+
+/////////// reverse words /////////////
+function reverseWord(str) {
+    // return str.split('').reverse().join('')
+    let reverseStr = ''
+    for (let index = str.length - 1; index >= 0; index--) {
+        reverseStr += str[index];
+    }
+    return reverseStr
+}
+// console.log(reverseWord("helloworld"))
+
+
+/////////////////// nullish Coaescing ///////////////
+function nullishCoaescing(person) {
+    let user = person?.name ?? "Deepak";
+    console.log(user)
+}
+// nullishCoaescing({ name: undefined })
+
+
+/////////////////// get unique value ///////////////
+function getUniqueValues(arr) {
+    return arr.filter((value, index, self) => {
+        return self.indexOf(value) === index;
+    });
+}
+// console.log(getUniqueValues([1, 2, 2, 3, 4, 4, 5])) //// return => [ 1, 2, 3, 4, 5 ]
