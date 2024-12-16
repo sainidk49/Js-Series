@@ -220,7 +220,7 @@ function nullishCoaescing(person) {
     let user = person?.name ?? "Deepak";
     console.log(user)
 }
-nullishCoaescing({ name: undefined }) //=> Deepak
+// nullishCoaescing({ name: undefined })
 
 
 /////////////////// get unique value ///////////////
@@ -230,3 +230,61 @@ function getUniqueValues(arr) {
     });
 }
 // console.log(getUniqueValues([1, 2, 2, 3, 4, 4, 5])) //// return => [ 1, 2, 3, 4, 5 ]
+
+/////////////////// create count function  ///////////////
+//// => whenever count function call value will be increase and 
+// also make reset function that will reset value as initial value
+
+const count = (() => {
+    let counter = 0;
+    function inner() {
+        counter++;
+        console.log(counter)
+    }
+    inner.reset = () => {
+        counter = 0
+    }
+
+    return inner
+})();
+
+// count() // return => 1
+// count() // return => 2
+// count() // return => 3
+// count.reset() // reset value as 0
+// count() // return => 1
+
+
+////////////// make a fuction which divide array in subarray as user want ///////////
+/////// => like [[1], [2], [3], [4], [5]]
+
+/////// => like [[1 ,2], [3, 4], [5]]
+
+/////// => like [[1 ,2, 3,] [4, 5]]
+
+/////// => like [[1 ,2, 3, 4 ], [5]]
+
+/////// => like [[1 ,2, 3, 4, 5]]
+
+let numberArr = [1, 2, 3, 4, 5]
+function makeSubArr(arr, size) {
+    if (arr.length >= size) {
+        let result = [],
+            subArr = [];
+        for (let index = 0; index < arr.length; index++) {
+            subArr.push(arr[index])
+            if (subArr.length === size || index === arr.length - 1) {
+                result.push(subArr);
+                subArr = []
+            }
+        }
+        console.log(result)
+        return result
+    }
+    else {
+        console.log("Please input vaid size of sub-array.")
+        return null
+    }
+}
+
+console.log(makeSubArr(numberArr, 4))
