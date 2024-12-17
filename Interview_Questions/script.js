@@ -135,20 +135,20 @@ function AddValue(a, b, callback) {
 
 const memoizeFun = memorize(AddValue)
 
-// memoizeFun(2, 5, (message, value) => {
-//     console.log("a", message, value)
-// })
-// memoizeFun(2, 5, (message, value) => {
-//     console.log("a", message, value)
-// })
+memoizeFun(2, 5, (message, value) => {
+    console.log("a", message, value)
+})
 
-// memoizeFun(2, 9, (message, value) => {
-//     console.log("c", message, value)
-// })
+memoizeFun(2, 9, (message, value) => {
+    console.log("b", message, value)
+})
+
+memoizeFun(2, 9, (message, value) => {
+    console.log("c", message, value)
+})
 
 
 // ============== chane method ===================
-
 function computeAmount() {
     let total = 0
     return {
@@ -178,10 +178,8 @@ function computeAmount() {
 
 ////////////////// flatten array ///////////////
 const nestedArr = [1, 2, 3, [4, [5, 6]], 7, 8]
-
 // const flattenArr = nestedArr.flat(Infinity)
 // console.log(flattenArr)
-
 const flattenArr = [];
 function flatten(a) {
     for (let i = 0; i < a.length; i++) {
@@ -202,6 +200,7 @@ function capitalizeWord(str) {
     return str.split(" ").map(str => str.charAt(0).toUpperCase() + str.slice(1)).join(' ')
 }
 // console.log(capitalizeWord("hello world"))
+
 
 /////////// reverse words /////////////
 function reverseWord(str) {
@@ -231,10 +230,10 @@ function getUniqueValues(arr) {
 }
 // console.log(getUniqueValues([1, 2, 2, 3, 4, 4, 5])) //// return => [ 1, 2, 3, 4, 5 ]
 
+
 /////////////////// create count function  ///////////////
 //// => whenever count function call value will be increase and 
 // also make reset function that will reset value as initial value
-
 const count = (() => {
     let counter = 0;
     function inner() {
@@ -247,7 +246,6 @@ const count = (() => {
 
     return inner
 })();
-
 // count() // return => 1
 // count() // return => 2
 // count() // return => 3
@@ -286,5 +284,4 @@ function makeSubArr(arr, size) {
         return null
     }
 }
-
-console.log(makeSubArr(numberArr, 4))
+// console.log(makeSubArr(numberArr, 4)) //// return=> [ [ 1, 2, 3, 4 ], [ 5 ] ]
