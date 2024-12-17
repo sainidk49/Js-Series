@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debounced Auto-suggestion</title>
+    <style>
+        .suggestions {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            max-height: 200px;
+            overflow-y: auto;
+            background-color: #fff;
+            width: 200px;
+        }
+
+        .suggestions li {
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        .suggestions li:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Search Suggestions (with Debouncing)</h2>
+    <input type="text" id="search" placeholder="Start typing...">
+    <ul id="suggestions" class="suggestions"></ul>
+
+    <script>
+        const data = [
+            "Apple", "Banana", "Blueberry", "Cherry", "Grape", "Lemon", "Lime", "Mango", "Peach", "Pineapple", "Strawberry"
+        ];
+
+        function filterSuggestions(query) {
+            return data.filter(item => item.toLowerCase().includes(query.toLowerCase()));
+        }
+
+        function displaySuggestions(suggestions) {
+            const suggestionsList = document.getElementById('suggestions');
+            suggestionsList.innerHTML = '';
+            suggestions.forEach(suggestion => {
+                const li = document.createElement('li');
+                li.textContent = suggestion;
+                li.onclick = function () {
+                    document.getElementById('search').value = suggestion;
+                    suggestionsList.innerHTML = '';
+                };
+                suggestionsList.appendChild(li);
+            });
+        }
+
+
+        function debounce(fn, delay) {
+            let timeId
+            return function (...args) {
+                clearTimeout(timeId);
+                timeId = setTimeout(function () {
+                    fn(...args)
+                }, delay);
+            }
+        }
+
+        function searchQuery(query) {
+            if (query) {
+                const filtered = filterSuggestions(query);
+                console.log(filtered)
+                displaySuggestions(filtered);
+            }
+            else {
+                document.getElementById('suggestions').innerHTML = '';
+            }
+
+        }
+
+        const handleSearch = debounce(searchQuery, 100);
+
+        document.getElementById('search').addEventListener('input', () => {
+            handleSearch(event.target.value)
+        });
+    </script>
+
+</body>
+
+</html>
