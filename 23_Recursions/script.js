@@ -63,21 +63,95 @@ function subsets(nums) {
     const result = [];
 
     function backtrack(start, path) {
-        if (start === nums.length - 1) {
-            result.push([...path])
+        if (start === nums.length) {
+            result.push([...path]);
             return;
-        }
-        backtrack(start + 1, path);
+        };
+
         path.push(nums[start]);
-        
         backtrack(start + 1, path);
+
         path.pop();
+        backtrack(start + 1, path);
     }
 
     backtrack(0, []);
     return result;
 }
 
-console.log(subsets([1, 2, 3]));  // => [ [],       [ 1 ], [ 1, 2 ], [ 1, 2, 3 ], [ 1, 3 ], [ 2 ], [ 2, 3 ], [ 3 ] ]
+// console.log(subsets([1, 2, 3]));  // => [ [], [ 1 ], [ 1, 2 ], [ 1, 2, 3 ], [ 1, 3 ], [ 2 ], [ 2, 3 ], [ 3 ] ]
 
 
+
+//========= traverse subset of array without duplicate subsets ================
+function subsetsWithoutDuplicate(arr, index, subArr, result) {
+    if (index === arr.length) {
+        result.push([...subArr]);
+        return;
+    };
+    ///////// include ///////
+    subArr.push(arr[index]);
+
+    subsetsWithoutDuplicate(arr, index + 1, subArr, result);
+
+    ///////// exclude ////
+    subArr.pop();
+
+    let checkIndex = index + 1;
+    while (checkIndex < arr.length && arr[checkIndex] === arr[checkIndex - 1]) {
+        checkIndex++;
+    }
+
+    /////// traverse ////////
+    subsetsWithoutDuplicate(arr, checkIndex, subArr, result);
+
+
+    return result;
+}
+const array = [1, 2, 3, 3]
+const i = 0;
+const subArray = [];
+const result = []
+// console.log(subsetsWithoutDuplicate(array, i, subArray, result));
+//// => return [ [ 1, 2, 3, 3 ], [ 1, 2, 3 ], [ 1, 2 ], [ 1, 3, 3 ], [ 1, 3 ], [ 1 ], [ 2, 3, 3 ], [ 2, 3 ], [ 2 ], [ 3, 3 ], [ 3 ], [] ]
+
+
+
+//========= permutations of array ================
+
+function swapValue(arr, start, index) {
+    let temp = arr[start];
+    arr[start] = arr[index];
+    arr[index] = temp;
+}
+
+function permutations(arr, start, result) {
+    if (start === arr.length) {
+        result.push([...arr]);
+        return;
+    }
+
+    for (let index = start; index < arr.length; index++) {
+
+        ///// swap the value /////////
+        swapValue(arr, start, index);
+
+        permutations(arr, start + 1, result)
+
+        ///// back tracking swap the value /////////
+        swapValue(arr, start, index);
+
+    }
+
+    return result;
+}
+console.log(permutations([1, 2, 3], 0, []));
+///// return => 
+// [
+//     [1, 2, 3],
+//     [1, 3, 2],
+//     [2, 1, 3],
+//     [2, 3, 1],
+//     [3, 2, 1],
+//     [3, 1, 2]
+// ] 
