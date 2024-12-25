@@ -55,5 +55,29 @@ function printFibonacciNum(number) {
     }
 }
 
-printFibonacciNum(10); //// return => 0 1 1 2 3 5 8 13 21 34 
+// printFibonacciNum(10); //// return => 0 1 1 2 3 5 8 13 21 34 
+
+
+////////////// subsets with backtracking ///////////
+function subsets(nums) {
+    const result = [];
+
+    function backtrack(start, path) {
+        if (start === nums.length - 1) {
+            result.push([...path])
+            return;
+        }
+        backtrack(start + 1, path);
+        path.push(nums[start]);
+        
+        backtrack(start + 1, path);
+        path.pop();
+    }
+
+    backtrack(0, []);
+    return result;
+}
+
+console.log(subsets([1, 2, 3]));  // => [ [],       [ 1 ], [ 1, 2 ], [ 1, 2, 3 ], [ 1, 3 ], [ 2 ], [ 2, 3 ], [ 3 ] ]
+
 
