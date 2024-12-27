@@ -145,7 +145,7 @@ function permutations(arr, start, result) {
 
     return result;
 }
-console.log(permutations([1, 2, 3], 0, []));
+// console.log(permutations([1, 2, 3], 0, []));
 ///// return => 
 // [
 //     [1, 2, 3],
@@ -155,3 +155,56 @@ console.log(permutations([1, 2, 3], 0, []));
 //     [3, 2, 1],
 //     [3, 1, 2]
 // ] 
+
+
+///////////// N queens //////////////
+
+function solveNQueens(n) {
+    const board = new Array(n).fill(null).map(() => new Array(n).fill('_ '));
+    const results = [];
+    
+    function isSafe(board, row, col) {
+        for (let i = 0; i < row; i++) {
+            if (board[i][col] === 'Q ') {
+                return false;
+            }
+        }
+        
+        for (let i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) {
+            if (board[i][j] === 'Q ') {
+                return false;
+            }
+        }
+        
+        for (let i = row - 1, j = col + 1; i >= 0 && j < n; i--, j++) {
+            if (board[i][j] === 'Q ') {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    function solve(row) {
+        if (row === n) {
+            results.push(board.map(row => row.join('')));
+            return;
+        }
+
+        for (let col = 0; col < n; col++) {
+            if (isSafe(board, row, col)) {
+                board[row][col] = 'Q ';
+                solve(row + 1);
+                board[row][col] = '_ ';
+                
+            }
+        }
+    }
+
+    solve(0);
+    return results;
+}
+
+const solutions = solveNQueens(4);
+console.log(`Found ${solutions.length} solutions for ${n}-Queens problem:`);
+console.log(solutions);
