@@ -11,7 +11,7 @@ let car = {
 
 
 
-// ================ Class ====================
+//// ================ Class ====================
 class Car {
     constructor(brand, model, year) {
         this.brand = brand;
@@ -37,12 +37,12 @@ class ElectricCar extends Car {
 
     displayInfo() {
         super.displayInfo(); // Call the parent method
-        console.log(`Battery Capacity: ${this.batteryCapacity} kWh`);
+        console.log(`${this.brand} ${this.model}, ${this.year}, Battery Capacity: ${this.batteryCapacity} kWh`);
     }
 }
 
 let myElectricCar = new ElectricCar("Tesla", "Model 3", 2023, 75);
-// myElectricCar.displayInfo();
+myElectricCar.displayInfo();
 
 
 
@@ -78,7 +78,7 @@ class Parent {
 class Child extends Parent {
     constructor(name, age) {
         super(name, age);
-        this.displayInfo();
+        super.displayInfo();
     }
 
     displayInfo() {
@@ -93,8 +93,8 @@ const parent = new Parent('Alice', 30);
 // parent.name = 'A';
 
 
-const child = new Child('July', 20);
-child.displayInfo();
+// const child = new Child('July', 20);
+// child.displayInfo();
 
 
 

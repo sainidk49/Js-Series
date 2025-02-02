@@ -41,11 +41,11 @@
 
 
 // ************* slice *****************
-let arr1 = [1, 2, 3, 4, 5]
+// let arr1 = [1, 2, 3, 4, 5]
 // let arr2 = arr1.slice() // its make a copy of array
-let arr2 = arr1.slice(1, 4) // take a range value from start point to end point
-console.log(arr1) // return=> [ 1, 2, 3, 4, 5 ]
-console.log(arr2) // return=> [ 2, 3, 4 ]
+// let arr2 = arr1.slice(1, 4) // take a range value from start point to end point
+// console.log(arr1) // return=> [ 1, 2, 3, 4, 5 ]
+// console.log(arr2) // return=> [ 2, 3, 4 ]
 
 
 // ************* splice *****************
@@ -74,8 +74,8 @@ console.log(arr2) // return=> [ 2, 3, 4 ]
 // console.log(arr3) // return => [ 'ajay', 'deepak', 'rahul', 'roshan', 'rahini', 'shiva' ]
 
 
-// let nestedArray = [1, 2, [3, 4], 5, [6, 7, [8, 9]]]
-// let flatArr = nestedArray.flat(Infinity) // concatenate all sub array call => flat method
+let nestedArray = [1, 2, [3, 4], 5, [6, 7, [8, 9]]]
+let flatArr = nestedArray.flat(Infinity) // concatenate all sub array call => flat method
 // console.log(flatArr) //return => [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 
@@ -85,5 +85,11 @@ console.log(arr2) // return=> [ 2, 3, 4 ]
 let el1 = 100;
 let el2 = 200;
 let el3 = 300;
-console.log(Array.of(el1, el2, el3)) // return=> [ 100, 200, 300 ]
+// console.log(Array.of(el1, el2, el3)) // return=> [ 100, 200, 300 ]
 
+
+/////////////////
+let arr1 = [1, 2, 3, 4, 5];
+Object.freeze(arr1)
+arr1[0]=6
+console.log(arr1)

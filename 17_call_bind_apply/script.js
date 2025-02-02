@@ -32,8 +32,8 @@ let obj2 = {
 function fetchDetail2(name, email){
     console.log(name, email, this.age)
 }
-fetchDetail2.apply(obj1, ["rahul", "rahul@gmail.com"]) //=> pass the array
-fetchDetail2.apply(obj2, ["rekha", "rekha@gmail.com"]) //=> pass the array
+fetchDetail2.apply(obj1, ["rahul", "rahul@gmail.com"]) ////=> pass the array
+fetchDetail2.apply(obj2, ["rekha", "rekha@gmail.com"]) ////=> pass the array
 
 
 // ================= With bind Methud ================
