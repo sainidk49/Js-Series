@@ -396,183 +396,130 @@ function campare(obj1, obj2) {
 
 
 
-////============== polyfill of map, filter, reduce, call, apply and bind ===========
-const polyfillArr = [1, 2, 3, 4, 5, 6, 7, 8, 5]
+////============== polyfill of map, and  filter ===========
+const polyfillArr = [1, 2, 3, 4, 4, 5, 6, 7, 8, 5]
 
-/// example of map => arr.map((value, index, self) => value * 5)
-Array.prototype.myMap = function (cb) {
+//// example of map => arr.map((value, index, self) => value * 5)
+Object.prototype.myMap = function (cb) {
     let dummyArr = [];
     for (let i = 0; i < this.length; i++) {
         dummyArr.push(cb(this[i], i, this));
     }
     return dummyArr;
 }
-const mapArr = polyfillArr.myMap((value, index, self) => {
-    console.log(value, self.indexOf(value))
-    return self.indexOf(value) === index 
-});
-console.log(mapArr);
+const mapArr = polyfillArr.myMap((value) => value * 5);
+// console.log(mapArr);
 
 
-// const valueArr = arr.filter(item => item > 5)
-
-// Array.prototype.myFilter = function (cb) {
-//     let dummyArr = [];
-//     for (let i = 0; i < this.length; i++) {
-//         if(cb(arr[i], i, this)){
-//             dummyArr.push(arr[i]);
-//         }
-//     }
-//     return dummyArr;
-// }
-
-
-// function dummyFn(item){
-//    return item > 5
-// }
-// const dummyValue = arr.myFilter(dummyFn);
-// console.log(dummyValue);
-
-// const arr = ["deepak", "ajay", "sonu", "emar"]
-// // const arr = [4,20,5,8]
-
-// console.log(arr.sort((a,b) => b.localeCompare(a)))
+//// example of filter =>  arr.filter(item => item > 5)
+Object.prototype.myFilter = function (cb) {
+    let dummyArr = [];
+    for (let i = 0; i < this.length; i++) {
+        if (cb(this[i], i, this)) {
+            dummyArr.push(this[i]);
+        }
+    }
+    return dummyArr;
+}
+const filterArr = polyfillArr.myFilter((value, index, self) => self.indexOf(value) === index);
+// console.log(filterArr);
 
 
-
-// function multi(a) {
-//     return function (b) {
-//         if (b) return multi(a * b)
-//         return a
-//     }
-// }
-// const value = multi()()
-// console.log(value)
-
-// const obj1 = {
-//     name: "deepak",
-//     age: 26,
-//     married: true,
-//     date: new Date(),
-//     child: { x: 16, y: 62 },
-//     bikes: ["splender", "mt15"],
-//     salary: undefined
-// }
+//// example of reduce =>  arr.reduce((acc, cur) =>  return acc + cur, 10)
+Object.prototype.myReducer = function (cb, intialValue) {
+    let acc = intialValue
+    for (let index = 0; index < this.length; index++) {
+        acc = acc ? cb(acc, this[index]) : this[index]
+    }
+    return acc
+}
+const resultAdd = polyfillArr.myReducer((acc, cur) => acc + cur, 10)
+// console.log(resultAdd)
 
 
-// function deepClone(obj1){
-//     const copyObj = {};
-//     for (const key in obj1) {
+////==============  call, apply and bind ===========
+const polyfillObj = {
+    company: "atthah",
+    address: "sector 58"
+}
 
-//         const value = obj1[key]
-//         copyObj[key] = value
-//         // if(value instanceof Date){
-//         //     copyObj[key]= value
-//         // }
-//         // else if(typeof value === "object"){
-//         //     copyObj[key] = deepClone(obj1[key])
-//         // }
-//         // else{
-//         //     copyObj[key] = value
-//         // }
-//     }
+function info(name, email) {
+    console.log(`Hi, my name is ${name} and email ${email}. I working with ${this.company} in ${this.address}`)
+}
 
-//     return copyObj
-// }
+//// example of call => info.call(polyfillObj, "deepak", "dpksaini49");
 
-// const obj2 = deepClone(obj1);
+Object.prototype.myCall = function(object, ...args){
+    object.myFn = this
+    object.this(...args)
+}
 
-// console.log(obj1, obj2)
-
-// function getSquare(a, cb) {
-//     setTimeout(() => {
-//         cb(a*a)
-//     }, 1000);
-// }
-
-// // getSquare(2, (res)=>{
-// //     console.log(res)
-// // })
-
-// const res = getSquare(2)
-
-// console.log(res)
+info.myCall(polyfillObj, "deepak", "dpksaini49");
 
 
-// let arr = [2, 3, 5, 4, 8];
-// const value = arr.reduce((acc, cur) => {
-//     return acc + cur
-// }, 10)
-
-// Array.prototype.myReducer = function (cb, intialValue) {
-//     let acc = intialValue
-//     let currentArr = this
-//     for (let index = 0; index < currentArr.length; index++) {
-//         acc = acc ? cb(acc, currentArr[index]) : currentArr[index]
-//     }
-//     return acc
-// }
-// const value = arr.myReducer((acc, cur) => {
-//     return acc + cur
-// }, 20)
-
-// console.log(value)
-
-// const obj = {
-//     company: "atthah",
-//     address: "sector 58"
-// }
-
-// function info(name, email){
-//     console.log(`Hi, my name is ${name} and email ${email}. I working with ${this.company} in ${this.address}`)
-// }
-
-// info.call(obj, "deepak", "dpksaini49");
-
-// Object.prototype.myCall = function(object, ...args){
-//     object.myFn = this
-//     object.myFn(...args)
-// }
-
-// function info(name, email){
-//     console.log(`Hi, my name is ${name} and email ${email}. I working with ${this.company} in ${this.address}`)
-// }
-
-// info.myCall(obj, "deepak", "dpksaini49");
-
-// Object.prototype.myApply = function(object, arr){
-//     object.myFn = this
-//     object.myFn(...arr)
-// }
-
-// function info(name, email){
-//     console.log(`Hi, my name is ${name} and email ${email}. I working with ${this.company} in ${this.address}`)
-// }
-
-// info.myApply(obj, ["deepak", "dpksaini49"]);
+//// example of apply => info.apply(polyfillObj, ["deepak", "dpksaini49"]);
+Object.prototype.myApply = function(object, arr){
+    object.myFn = this
+    object.myFn(...arr)
+}
+// info.myApply(polyfillObj, ["deepak", "dpksaini49"]);
 
 
-// const obj1 = {
-//     name: "deepak",
-// }
-
-// function print(age){
-//     console.log(this.name, age)
-// }
-// const fn = print.bind(obj1);
-// fn()
-
-// Function.prototype.mybind = function(obj, ...args){
-//     obj.myFn = this;
-//     return function(){
-//         obj.myFn(...args)
-//     }
-// }
-
-// const fn2 = print.mybind(obj1, 26);
-// fn2()
+//// example of bind => info.bind(polyfillObj, "deepak", "dpksaini49");
+Object.prototype.mybind = function(obj, ...args){
+    obj.myFn = this;
+    return function(){
+        obj.myFn(...args)
+    }
+}
+const fn2 = info.mybind(polyfillObj, "deepak", "dpksaini49");
+fn2()
 
 
+/////////////// sort number and string /////////
+// console.log([4,20,5,8].sort((a,b) => a-b))
+// console.log(["deepak", "ajay", "sonu", "emar"].sort((a,b) => a.localeCompare(b)))
+
+
+/////////////// function curring  /////////
+function multi1(a) {
+    return function (b) {
+        if (b) return multi1(a * b)
+        return a
+    }
+}
+const resultMulti = multi1(5)(6)()
+// console.log(resultMulti)
+
+
+/////////////// shalow copy and deep copy/////////
+const cloneObj = {
+    name: "deepak",
+    age: 26,
+    married: true,
+    date: new Date(),
+    child: { x: 16, y: undefined },
+    bikes: ["splender", "mt15"],
+    salary: undefined
+}
+
+const clonedObj1 = JSON.parse(JSON.stringify(cloneObj))
+// console.log(clonedObj1)
+
+function deepClone(cloneObj) {
+    const copyObj = {};
+    for (const key in cloneObj) {
+        copyObj[key] = cloneObj[key]
+    }
+    return copyObj
+}
+const clonedObj2 = deepClone(cloneObj);
+// console.log(clonedObj2)
+
+
+
+
+//////////// call object's function ///////////
 // class Person {
 //     constructor(name, email, age) {
 //         this.name = name;
@@ -594,17 +541,4 @@ console.log(mapArr);
 
 // const copyFn = person.print
 // // copyFn() //////////// use funtion bind or convert fn into arraw fn
-
-
-// let state = {
-//     value: undefined,
-//     setValue(val) {
-//         this.value = val;
-//     },
-//     getValue() {
-//         return this.value;
-//     }
-// };
-
-// const arr = [() => state.value, (val) => state.setValue(val)];
 
