@@ -38,6 +38,7 @@ function shortArray() {
 }
 // shortArray() //==> Fun calling here!
 
+
 ///////////// check character count ////////////
 function characterCount() {
     let str = "deepak saini";
@@ -148,7 +149,7 @@ const memoizeFun = memorize(AddValue)
 // })
 
 
-// ============== chane method ===================
+// ============== chain method ===================
 function computeAmount() {
     let total = 0
     return {
@@ -287,15 +288,8 @@ function makeSubArr(arr, size) {
 // console.log(makeSubArr(numberArr, 4)) //// return=> [ [ 1, 2, 3, 4 ], [ 5 ] ]
 
 
-// const str = "deepak saini";
-// function capiliseWord(str) {
-//     let words = str.split(' ');
-//     let capiliseWords = words.map(value => value.charAt(0).toUpperCase() + value.slice(1)).join(" "); 
-//     return capiliseWords
-// }
-// console.log(capiliseWord(str))
-
-// const data = new Promise((res, rej) => res(2));
+////////////////// print finally value ///////////////
+const data = new Promise((res, rej) => res(2));
 // data.then(val => {
 //     console.log(val)
 //     return val * 2
@@ -308,140 +302,119 @@ function makeSubArr(arr, size) {
 // }).finally((val) => {
 //     console.log(val)
 // })
-
 // return => 2 4 8 undefined
 
 
-// const arr = [1, 2, 3, 4, 5]
+////////////////// convert arr to obj by spread ///////////////
+const objArr = [1, 2, 3, 4, 5]
+objArr["foo"] = 24;
+const convertObj = { ...objArr }
+// console.log(convertObj) //return=> { '0': 1, '1': 2, '2': 3, '3': 4, '4': 5, foo: 24 }
 
-// arr["foo"] = 24;
 
-// const obj = { ...arr }
+////////////////// geter and seter ///////////////
+let state = {
+    value: undefined,
+    setValue(val) {
+        this.value = val;
+    },
+    getValue() {
+        return this.value;
+    }
+};
 
-// console.log(obj) //return=> { '0': 1, '1': 2, '2': 3, '3': 4, '4': 5, foo: 24 }
-
-// // // /{1,2,3,4,5}/
-
-// import data from "./myModule.js";
-
-// // console.log(name);
-
-// console.log(data.myName, data.age, data.email, data.phone);
-
-// let state = {
-//     value: undefined,
-//     setValue(val) {
-//         this.value = val;
-//     },
-//     getValue() {
-//         return this.value;
-//     }
-// };
-
-// const arr = [() => state.value, (val) => state.setValue(val)];
-
-// // Usage
-// const [getCount, setCount] = arr;
-// setCount(5);
-// console.log(getCount()); // 5
+const stateArr = [() => state.value, (val) => state.setValue(val)];
+const [getCount, setCount] = stateArr;
+setCount(5);
+// console.log(getCount()); // => 5
 
 
 ////=================== campare objects ================
-// const user1 = {
-//     name: "deepak",
-//     age: 26,
-//     married: true,
-//     date: new Date("2021-03-25"),
-//     child: { x: 16, y: 62 },
-//     bikes: ["splender", "mt15"],
-// }
+const user1 = {
+    name: "deepak",
+    age: 26,
+    married: true,
+    date: new Date("2021-03-25"),
+    child: { x: 16, y: 62 },
+    bikes: ["splender", "mt15"],
+}
 
-// const user2 = {
-//     name: "deepak",
-//     married: true,
-//     age: 26,
-//     date: new Date("2021-03-25"),
-//     child: {  y: 62 , x: 16},
-//     bikes: ["splender", "mt15"],
-// }
-
-
-// function campare(obj1, obj2) {
-//     ///// it is working if key is same sequence ////////
-//     // if (JSON.stringify(obj1) !== JSON.stringify(obj2)) {
-//     //     return false
-//     // }
-
-//     if (typeof obj1 !== "object" || obj1 === null && typeof obj2 !== "object" || obj2 === null) {
-//         return false
-//     }
-
-//     const obj1Keys = Object.keys(obj1)
-//     const obj2Keys = Object.keys(obj2)
-
-//     if(obj1Keys.length !== obj2Keys.length){
-//         return false
-//     }
-
-//     for (const key of obj1Keys) {
-//         if (!obj2.hasOwnProperty(key)) {
-//             return false
-//         }
-
-//         else if (obj1[key] instanceof Date && obj2[key] instanceof Date) {
-//             if (obj1[key].getTime() !== obj2[key].getTime()) {
-//                 return false
-//             }
-//         }
-
-//         else if (typeof obj1[key] === "object" && typeof obj2[key] === "object") {
-
-//             if (!campare(obj1[key], obj2[key])) {
-//                 return false
-//             }
-//         }
-
-//         else if (obj1[key] !== obj2[key]) {
-//             return false
-//         }
-
-//     }
-
-//     return true
-// }
-
-// console.log(campare(user1, user2))
+const user2 = {
+    name: "deepak",
+    married: true,
+    age: 26,
+    date: new Date("2021-03-25"),
+    child: { y: 62, x: 16 },
+    bikes: ["splender", "mt15"],
+}
 
 
-// var name = "deepak"
+function campare(obj1, obj2) {
+    ///// it is working if key is same sequence ////////
+    // if (JSON.stringify(obj1) !== JSON.stringify(obj2)) {
+    //     return false
+    // }
 
-// console.log(age)
+    if (typeof obj1 !== "object" || obj1 === null && typeof obj2 !== "object" || obj2 === null) {
+        return false
+    }
 
-// function fn() {
-//     console.log(name);
-//     const age = "raju"
-// }
-// fn()
-// console.log(name);
+    const obj1Keys = Object.keys(obj1)
+    const obj2Keys = Object.keys(obj2)
+
+    if (obj1Keys.length !== obj2Keys.length) {
+        return false
+    }
+
+    for (const key of obj1Keys) {
+        if (!obj2.hasOwnProperty(key)) {
+            return false
+        }
+
+        else if (obj1[key] instanceof Date && obj2[key] instanceof Date) {
+            if (obj1[key].getTime() !== obj2[key].getTime()) {
+                return false
+            }
+        }
+
+        else if (typeof obj1[key] === "object" && typeof obj2[key] === "object") {
+
+            if (!campare(obj1[key], obj2[key])) {
+                return false
+            }
+        }
+
+        else if (obj1[key] !== obj2[key]) {
+            return false
+        }
+
+    }
+
+    return true
+}
+// console.log(campare(user1, user2)) //// retrun => ture/false
 
 
 
-// const valueArr = arr.map((item, index) => ({ [index]: item * 2 }))
+////============== polyfill of map, filter, reduce, call, apply and bind ===========
+const polyfillArr = [1, 2, 3, 4, 5, 6, 7, 8, 5]
 
-// Array.prototype.myMap = function(cb){
-//  let dummyArr=[];
-//   for(let i=0;i<this.length;i++){
-//    dummyArr.push(cb(arr[i],i,this)) ;
-//   }
-// return dummyArr;
-// }
+/// example of map => arr.map((value, index, self) => value * 5)
+Array.prototype.myMap = function (cb) {
+    let dummyArr = [];
+    for (let i = 0; i < this.length; i++) {
+        dummyArr.push(cb(this[i], i, this));
+    }
+    return dummyArr;
+}
+const mapArr = polyfillArr.myMap((value, index, self) => {
+    console.log(value, self.indexOf(value))
+    return self.indexOf(value) === index 
+});
+console.log(mapArr);
 
-// const dummyValue=arr.myMap((item)=>item*2);
-// console.log(dummyValue);
 
 // const valueArr = arr.filter(item => item > 5)
-
-// const arr = [1, 2, 3, 4, 5, 6, 7, 8]
 
 // Array.prototype.myFilter = function (cb) {
 //     let dummyArr = [];
@@ -545,10 +518,10 @@ function makeSubArr(arr, size) {
 
 // console.log(value)
 
-const obj = {
-    company: "atthah",
-    address: "sector 58"
-}
+// const obj = {
+//     company: "atthah",
+//     address: "sector 58"
+// }
 
 // function info(name, email){
 //     console.log(`Hi, my name is ${name} and email ${email}. I working with ${this.company} in ${this.address}`)
@@ -600,38 +573,38 @@ const obj = {
 // fn2()
 
 
-class Person {
-    constructor(name, email, age) {
-        this.name = name;
-        this.age = age;
-        this.email = email
-        this.print = this.print.bind(this)
-    }
+// class Person {
+//     constructor(name, email, age) {
+//         this.name = name;
+//         this.age = age;
+//         this.email = email
+//         this.print = this.print.bind(this)
+//     }
 
-    // print = () => {
-    //     console.log(this.name, this.email, this.age)
-    // },
+//     // print = () => {
+//     //     console.log(this.name, this.email, this.age)
+//     // },
 
-    print() {
-        console.log(this.name, this.email, this.age)
-    }
-}
+//     print() {
+//         console.log(this.name, this.email, this.age)
+//     }
+// }
 
-const person = new Person("deepak", "dpksini49@gmail.com", 26)
+// const person = new Person("deepak", "dpksini49@gmail.com", 26)
 
-const copyFn = person.print
-// copyFn() //////////// use funtion bind or convert fn into arraw fn
+// const copyFn = person.print
+// // copyFn() //////////// use funtion bind or convert fn into arraw fn
 
 
-let state = {
-    value: undefined,
-    setValue(val) {
-        this.value = val;
-    },
-    getValue() {
-        return this.value;
-    }
-};
+// let state = {
+//     value: undefined,
+//     setValue(val) {
+//         this.value = val;
+//     },
+//     getValue() {
+//         return this.value;
+//     }
+// };
 
-const arr = [() => state.value, (val) => state.setValue(val)];
+// const arr = [() => state.value, (val) => state.setValue(val)];
 
