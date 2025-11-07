@@ -286,3 +286,352 @@ function makeSubArr(arr, size) {
 }
 // console.log(makeSubArr(numberArr, 4)) //// return=> [ [ 1, 2, 3, 4 ], [ 5 ] ]
 
+
+// const str = "deepak saini";
+// function capiliseWord(str) {
+//     let words = str.split(' ');
+//     let capiliseWords = words.map(value => value.charAt(0).toUpperCase() + value.slice(1)).join(" "); 
+//     return capiliseWords
+// }
+// console.log(capiliseWord(str))
+
+// const data = new Promise((res, rej) => res(2));
+// data.then(val => {
+//     console.log(val)
+//     return val * 2
+// }).then(val => {
+//     console.log(val)
+//     return val * 2
+// }).then(val => {
+//     console.log(val)
+//     return 2
+// }).finally((val) => {
+//     console.log(val)
+// })
+
+// return => 2 4 8 undefined
+
+
+// const arr = [1, 2, 3, 4, 5]
+
+// arr["foo"] = 24;
+
+// const obj = { ...arr }
+
+// console.log(obj) //return=> { '0': 1, '1': 2, '2': 3, '3': 4, '4': 5, foo: 24 }
+
+// // // /{1,2,3,4,5}/
+
+// import data from "./myModule.js";
+
+// // console.log(name);
+
+// console.log(data.myName, data.age, data.email, data.phone);
+
+// let state = {
+//     value: undefined,
+//     setValue(val) {
+//         this.value = val;
+//     },
+//     getValue() {
+//         return this.value;
+//     }
+// };
+
+// const arr = [() => state.value, (val) => state.setValue(val)];
+
+// // Usage
+// const [getCount, setCount] = arr;
+// setCount(5);
+// console.log(getCount()); // 5
+
+
+////=================== campare objects ================
+// const user1 = {
+//     name: "deepak",
+//     age: 26,
+//     married: true,
+//     date: new Date("2021-03-25"),
+//     child: { x: 16, y: 62 },
+//     bikes: ["splender", "mt15"],
+// }
+
+// const user2 = {
+//     name: "deepak",
+//     married: true,
+//     age: 26,
+//     date: new Date("2021-03-25"),
+//     child: {  y: 62 , x: 16},
+//     bikes: ["splender", "mt15"],
+// }
+
+
+// function campare(obj1, obj2) {
+//     ///// it is working if key is same sequence ////////
+//     // if (JSON.stringify(obj1) !== JSON.stringify(obj2)) {
+//     //     return false
+//     // }
+
+//     if (typeof obj1 !== "object" || obj1 === null && typeof obj2 !== "object" || obj2 === null) {
+//         return false
+//     }
+
+//     const obj1Keys = Object.keys(obj1)
+//     const obj2Keys = Object.keys(obj2)
+
+//     if(obj1Keys.length !== obj2Keys.length){
+//         return false
+//     }
+
+//     for (const key of obj1Keys) {
+//         if (!obj2.hasOwnProperty(key)) {
+//             return false
+//         }
+
+//         else if (obj1[key] instanceof Date && obj2[key] instanceof Date) {
+//             if (obj1[key].getTime() !== obj2[key].getTime()) {
+//                 return false
+//             }
+//         }
+
+//         else if (typeof obj1[key] === "object" && typeof obj2[key] === "object") {
+
+//             if (!campare(obj1[key], obj2[key])) {
+//                 return false
+//             }
+//         }
+
+//         else if (obj1[key] !== obj2[key]) {
+//             return false
+//         }
+
+//     }
+
+//     return true
+// }
+
+// console.log(campare(user1, user2))
+
+
+// var name = "deepak"
+
+// console.log(age)
+
+// function fn() {
+//     console.log(name);
+//     const age = "raju"
+// }
+// fn()
+// console.log(name);
+
+
+
+// const valueArr = arr.map((item, index) => ({ [index]: item * 2 }))
+
+// Array.prototype.myMap = function(cb){
+//  let dummyArr=[];
+//   for(let i=0;i<this.length;i++){
+//    dummyArr.push(cb(arr[i],i,this)) ;
+//   }
+// return dummyArr;
+// }
+
+// const dummyValue=arr.myMap((item)=>item*2);
+// console.log(dummyValue);
+
+// const valueArr = arr.filter(item => item > 5)
+
+// const arr = [1, 2, 3, 4, 5, 6, 7, 8]
+
+// Array.prototype.myFilter = function (cb) {
+//     let dummyArr = [];
+//     for (let i = 0; i < this.length; i++) {
+//         if(cb(arr[i], i, this)){
+//             dummyArr.push(arr[i]);
+//         }
+//     }
+//     return dummyArr;
+// }
+
+
+// function dummyFn(item){
+//    return item > 5
+// }
+// const dummyValue = arr.myFilter(dummyFn);
+// console.log(dummyValue);
+
+// const arr = ["deepak", "ajay", "sonu", "emar"]
+// // const arr = [4,20,5,8]
+
+// console.log(arr.sort((a,b) => b.localeCompare(a)))
+
+
+
+// function multi(a) {
+//     return function (b) {
+//         if (b) return multi(a * b)
+//         return a
+//     }
+// }
+// const value = multi()()
+// console.log(value)
+
+// const obj1 = {
+//     name: "deepak",
+//     age: 26,
+//     married: true,
+//     date: new Date(),
+//     child: { x: 16, y: 62 },
+//     bikes: ["splender", "mt15"],
+//     salary: undefined
+// }
+
+
+// function deepClone(obj1){
+//     const copyObj = {};
+//     for (const key in obj1) {
+
+//         const value = obj1[key]
+//         copyObj[key] = value
+//         // if(value instanceof Date){
+//         //     copyObj[key]= value
+//         // }
+//         // else if(typeof value === "object"){
+//         //     copyObj[key] = deepClone(obj1[key])
+//         // }
+//         // else{
+//         //     copyObj[key] = value
+//         // }
+//     }
+
+//     return copyObj
+// }
+
+// const obj2 = deepClone(obj1);
+
+// console.log(obj1, obj2)
+
+// function getSquare(a, cb) {
+//     setTimeout(() => {
+//         cb(a*a)
+//     }, 1000);
+// }
+
+// // getSquare(2, (res)=>{
+// //     console.log(res)
+// // })
+
+// const res = getSquare(2)
+
+// console.log(res)
+
+
+// let arr = [2, 3, 5, 4, 8];
+// const value = arr.reduce((acc, cur) => {
+//     return acc + cur
+// }, 10)
+
+// Array.prototype.myReducer = function (cb, intialValue) {
+//     let acc = intialValue
+//     let currentArr = this
+//     for (let index = 0; index < currentArr.length; index++) {
+//         acc = acc ? cb(acc, currentArr[index]) : currentArr[index]
+//     }
+//     return acc
+// }
+// const value = arr.myReducer((acc, cur) => {
+//     return acc + cur
+// }, 20)
+
+// console.log(value)
+
+const obj = {
+    company: "atthah",
+    address: "sector 58"
+}
+
+// function info(name, email){
+//     console.log(`Hi, my name is ${name} and email ${email}. I working with ${this.company} in ${this.address}`)
+// }
+
+// info.call(obj, "deepak", "dpksaini49");
+
+// Object.prototype.myCall = function(object, ...args){
+//     object.myFn = this
+//     object.myFn(...args)
+// }
+
+// function info(name, email){
+//     console.log(`Hi, my name is ${name} and email ${email}. I working with ${this.company} in ${this.address}`)
+// }
+
+// info.myCall(obj, "deepak", "dpksaini49");
+
+// Object.prototype.myApply = function(object, arr){
+//     object.myFn = this
+//     object.myFn(...arr)
+// }
+
+// function info(name, email){
+//     console.log(`Hi, my name is ${name} and email ${email}. I working with ${this.company} in ${this.address}`)
+// }
+
+// info.myApply(obj, ["deepak", "dpksaini49"]);
+
+
+// const obj1 = {
+//     name: "deepak",
+// }
+
+// function print(age){
+//     console.log(this.name, age)
+// }
+// const fn = print.bind(obj1);
+// fn()
+
+// Function.prototype.mybind = function(obj, ...args){
+//     obj.myFn = this;
+//     return function(){
+//         obj.myFn(...args)
+//     }
+// }
+
+// const fn2 = print.mybind(obj1, 26);
+// fn2()
+
+
+class Person {
+    constructor(name, email, age) {
+        this.name = name;
+        this.age = age;
+        this.email = email
+        this.print = this.print.bind(this)
+    }
+
+    // print = () => {
+    //     console.log(this.name, this.email, this.age)
+    // },
+
+    print() {
+        console.log(this.name, this.email, this.age)
+    }
+}
+
+const person = new Person("deepak", "dpksini49@gmail.com", 26)
+
+const copyFn = person.print
+// copyFn() //////////// use funtion bind or convert fn into arraw fn
+
+
+let state = {
+    value: undefined,
+    setValue(val) {
+        this.value = val;
+    },
+    getValue() {
+        return this.value;
+    }
+};
+
+const arr = [() => state.value, (val) => state.setValue(val)];
+
