@@ -1,29 +1,30 @@
 function getMajorityEle(arr) {
     // =========== bruitforce ============
-    for (let i = 0; i < arr.length; i++) {
-        let freq = 0
-        for (let j = 0; j < arr.length; j++) {
-            if (arr[i] === arr[j]) {
-                freq++;
-            }
-            if (freq > parseInt(arr.length / 2)) {
-                return arr[i]
-            }
-        }
-    }
+    // for (let i = 0; i < arr.length; i++) {
+    //     let freq = 0
+    //     for (let j = 0; j < arr.length; j++) {
+    //         if (arr[i] === arr[j]) {
+    //             freq++;
+    //         }
+    //         if (freq > parseInt(arr.length / 2)) {
+    //             return arr[i]
+    //         }
+    //     }
+    // }
 
     // =========== optimised ============
-    // let freq = 0, ans = 0
-    // for (let i = 0; i < arr.length; i++) {
-    //     if (freq === 0) {
-    //         ans = arr[i]
-    //     }
-    //     if (ans === arr[i]) freq++
-    //     else freq--
-    // }
-    // return ans
+    let freq = 0, ans = 0
+    for (let i = 0; i < arr.length; i++) {
+        if (freq === 0) {
+            ans = arr[i]
+        }
+        if (ans === arr[i]) freq++
+        else freq--
+    }
+    return ans
 }
 // console.log(getMajorityEle([3, 2, 3, 2, 3, 1, 3,]))
+console.log(getMajorityEle([1, 2, 3, 3, 2, 3,]))
 
 
 function getDicies(arr, target) {
@@ -221,4 +222,4 @@ function getClosetSum(arr, target) {
 }
 
 // console.log(getClosetSum([1, 3, 4, 7, 10], 15))
-console.log(getClosetSum([10, 22, 28, 29, 30, 40], 54))
+// console.log(getClosetSum([10, 22, 28, 29, 30, 40], 54))
