@@ -518,27 +518,26 @@ const clonedObj2 = deepClone(cloneObj);
 
 
 
-
 //////////// call object's function ///////////
-// class Person {
-//     constructor(name, email, age) {
-//         this.name = name;
-//         this.age = age;
-//         this.email = email
-//         this.print = this.print.bind(this)
-//     }
+class Person {
+    constructor(name, email, age) {
+        this.name = name;
+        this.age = age;
+        this.email = email
+        this.print = this.print.bind(this)
+    }
 
-//     // print = () => {
-//     //     console.log(this.name, this.email, this.age)
-//     // },
+    // print = () => {
+    //     console.log(this.name, this.email, this.age)
+    // },
 
-//     print() {
-//         console.log(this.name, this.email, this.age)
-//     }
-// }
+    print() {
+        console.log(this.name, this.email, this.age)
+    }
+}
 
-// const person = new Person("deepak", "dpksini49@gmail.com", 26)
+const person = new Person("deepak", "dpksini49@gmail.com", 26)
 
-// const copyFn = person.print
+const copyFn = person.print
 // // copyFn() //////////// use funtion bind or convert fn into arraw fn
 
