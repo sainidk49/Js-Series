@@ -139,8 +139,6 @@ function getTarget(arr, target) {
 // console.log(getTarget([-1, 0, 2, 7, 10, 11, 15, 17], 11))
 
 
-
-
 /////////// get target value by binary search with recursion //////////
 function getTargetRecursion(arr, target, start, end) {
 
@@ -223,3 +221,13 @@ function getClosetSum(arr, target) {
 
 // console.log(getClosetSum([1, 3, 4, 7, 10], 15))
 // console.log(getClosetSum([10, 22, 28, 29, 30, 40], 54))
+
+
+/////////// max profit //////////////////
+function getMissingNum(arr) {
+    const n = arr[arr.length - 1]
+    const NumFac = (n * (n + 1)) / 2;
+    let totalSum = arr.reduce((acc, value) => acc + value)
+    return NumFac - totalSum
+}
+// console.log(getMissingNum([1, 2, 3, 4, 6, 7]))
