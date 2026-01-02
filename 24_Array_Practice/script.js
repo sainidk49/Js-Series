@@ -231,3 +231,38 @@ function getMissingNum(arr) {
     return NumFac - totalSum
 }
 // console.log(getMissingNum([1, 2, 3, 4, 6, 7]))
+
+////////// get max of min page of book //////////
+function isValid(arr, mid, student) {
+    let stCount = 1;
+    let pages = 0;
+    for (let index = 0; index < arr.length; index++) {
+        if (pages + arr[index] <= mid) {
+            pages += arr[index]
+        }
+        else {
+            pages = arr[index]
+            stCount += 1
+        }
+    }
+    return stCount <= student
+}
+function getMaxPagesBookAllowtment(arr, student) {
+    let start = 0;
+    let end = arr.reduce((acc, cur) => acc + cur);
+    let mid = 0
+    if (student > arr.length) {
+        return -1
+    }
+    while (start <= end) {
+        mid = parseInt(start + (end - start) / 2);
+        if (isValid(arr, mid, student)) {
+            end = mid - 1
+        }
+        else {
+            start = mid + 1
+        }
+    }
+    return mid
+}
+console.log(getMaxPagesBookAllowtment([2, 6, 3, 4], 3))
