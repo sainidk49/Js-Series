@@ -233,7 +233,7 @@ function getMissingNum(arr) {
 // console.log(getMissingNum([1, 2, 3, 4, 6, 7]))
 
 ////////// get max of min page of book //////////
-function isValid(arr, mid, student) {
+function isMaxValid(arr, mid, student) {
     let stCount = 1;
     let pages = 0;
     for (let index = 0; index < arr.length; index++) {
@@ -256,7 +256,7 @@ function getMaxPagesBookAllowtment(arr, student) {
     }
     while (start <= end) {
         mid = parseInt(start + (end - start) / 2);
-        if (isValid(arr, mid, student)) {
+        if (isMaxValid(arr, mid, student)) {
             end = mid - 1
         }
         else {
@@ -265,4 +265,43 @@ function getMaxPagesBookAllowtment(arr, student) {
     }
     return mid
 }
-console.log(getMaxPagesBookAllowtment([2, 6, 3, 4], 3))
+// console.log(getMaxPagesBookAllowtment([2, 6, 3, 4], 3))
+
+
+// =========== aggresive caw (min of max value) ===========
+function isMinVaue(arr, minAllow, caws) {
+    let cawCount = 1;
+    let lastPosiCaw = arr[0]
+    for (let i = 1; i < arr.length; i++) {
+        if (minAllow < arr[i] - lastPosiCaw) {
+            lastPosiCaw = arr[i]
+            cawCount++
+        }
+
+        if (cawCount >= caws) {
+            return true
+        }
+
+    }
+    return false
+}
+
+function getMinOfMax(arr, caws) {
+    arr.sort((a, b) => a - b)
+    let min = arr[0]
+    let max = Math.max(...arr) - arr[0]
+    let ans = -1
+    while (min <= max) {
+        let mid = parseInt(min + (max - min) / 2)
+        if (isMinVaue(arr, mid, caws)) {
+            min = mid + 1;
+            ans = mid
+        }
+        else {
+            max = mid - 1
+        }
+    }
+
+    return ans
+}
+console.log(getMinOfMax([1, 2, 8, 4, 9], 2))
