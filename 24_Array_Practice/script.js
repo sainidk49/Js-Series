@@ -304,4 +304,34 @@ function getMinOfMax(arr, caws) {
 
     return ans
 }
-console.log(getMinOfMax([1, 2, 8, 4, 9], 2))
+// console.log(getMinOfMax([1, 2, 8, 4, 9], 2))
+
+////////////// sort 0s, 1s, 2s with dutch algo /////////////
+function swapPosition(i, j, arr) {
+    const temp = arr[i]
+    arr[i] = arr[j]
+    arr[j] = temp
+}
+function sortWithDutchAlgo(arr) {
+    let l = 0;
+    let m = 0;
+    let h = arr.length - 1;
+    while (m <= h) {
+        if (arr[m] === 0) {
+            swapPosition(l, m, arr);
+            l++;
+            m++
+        }
+        else if (arr[m] === 1) {
+            m++
+        }
+        else if (arr[m] === 2) {
+            swapPosition(m, h, arr);
+            h--
+        }
+    }
+    return arr
+}
+
+// console.log(sortWithDutchAlgo([2, 0, 1, 1, 0, 2]))
+// console.log(sortWithDutchAlgo([1, 0, 1, 2, 0, 2]))
